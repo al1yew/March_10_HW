@@ -9,7 +9,8 @@ namespace Mart_10_HW
     {
         static void Main(string[] args)
         {
-
+            List<Book> Books = new List<Book>();
+            Library[] library = new Library[] { };
             do
             {
                 Console.WriteLine($"\n===== Hello dear user =====\n" + "\n" +
@@ -35,11 +36,11 @@ namespace Mart_10_HW
                 switch (userchoicenum)
                 {
                     case 1:
-                        AddBook();
+                        ShowAllBooks(ref library);
                         break;
-                    //case 2:
-                    //    AddDepartment(ref humanResourceManager);
-                    //    break;
+                    case 2:
+                        AddBook(ref library);
+                        break;
                     //case 3:
                     //    EditDepartment(ref humanResourceManager);
                     //    break;
@@ -59,10 +60,9 @@ namespace Mart_10_HW
                 }
             } while (true);
         }
-        static void AddBook()
-        {
-            Library library = new Library();
 
+        static void AddBook(ref Library[] library)
+        {
             Console.WriteLine("\nPlease write down name of Book that you are going to add:");
             string name = Console.ReadLine();
 
@@ -92,9 +92,27 @@ namespace Mart_10_HW
 
             int pages = int.Parse(pagecount);
 
-            library.AddBook(name, authorname, pages);
+            AddBook(name, authorname, pages);
 
             Console.WriteLine("BYE!");
+        }
+        static void ShowAllBooks(ref Library[] library)
+        {
+            if (library.Length > 0)
+            {
+                Console.WriteLine($"Welcome. There are {boo.Count} .");
+                Console.WriteLine("\nDepartments list:\n");
+                foreach (Department department in humanResourceManager.DepartmentList)
+                {
+                    Console.WriteLine(department);
+                    department.CalcSalaryAverage();
+                }
+            }
+            else
+            {
+                Console.WriteLine("\nSorry but there are no Departments in system. Try to add some.\n");
+                return;
+            }
         }
     }
 }
