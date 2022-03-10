@@ -12,6 +12,6 @@ namespace Mart_10_HW.Interfaces
         void RemoveBook(string bookcode);
         void FindAllBooksByName(string name);
         void RemoveAllBookByName(string name);
-        void FindAllBooksByPageCountRange(int a, int b)
+        void FindAllBooksByPageCountRange(int a, int b);
     }
 }

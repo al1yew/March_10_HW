@@ -67,9 +67,30 @@ namespace Mart_10_HW.Services
             
         }
 
-        public void FindAllBooksByPageCountRange(int a, int b) 
+        public List<string> FindAllBooksByPageCountRange(int a, int b)
         {
+            List<string> founded = new List<string>();
+            foreach (var item in library)
+            {
+                for (int i = 0; i < library.Length; i++)
+                {
+                    if (item.Books[i].PageCount > a && item.Books[i].PageCount < b)
+                    {
+                        founded.Add(item.Books[i].ToString());
+                    }
+                }
+            }
+            return founded;
+        }
 
+        void Iservice.FindAllBooksByName(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        void Iservice.FindAllBooksByPageCountRange(int a, int b)
+        {
+            throw new NotImplementedException();
         }
     }
 }

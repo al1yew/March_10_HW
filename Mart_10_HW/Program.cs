@@ -19,13 +19,14 @@ namespace Mart_10_HW
                     $"3. -- Remove Book\n" +
                     $"4. -- Search Book by parameters\n" +
                     $"5. -- Find Book by appropriate page count\n" +
-                    $"6. -- Exit\n" +
+                    $"6. -- Continuous remover" +
+                    $"7. -- Exit\n" +
                     $"+_+_+_+_+_+_+_+_+_+_+_+_+ ");
 
                 string userchoice = Console.ReadLine();
                 byte userchoicenum;
 
-                while (!byte.TryParse(userchoice, out userchoicenum) || userchoicenum < 1 || userchoicenum > 7)
+                while (!byte.TryParse(userchoice, out userchoicenum) || userchoicenum < 1 || userchoicenum > 8)
                 {
                     Console.WriteLine("\nYou need to choose numbers from 1 to 6 without using any other symbols.\nTry again\n");
                     userchoice = Console.ReadLine();
@@ -40,16 +41,19 @@ namespace Mart_10_HW
                     case 2:
                         AddBook(ref service);
                         break;
-                    //case 3:
-                    //    EditDepartment(ref humanResourceManager);
-                    //    break;
-                    //case 4:
-                    //    GetDepartmentWorkers(ref humanResourceManager);
-                    //    break;
-                    //case 5:
-                    //    GetWorkersList(ref humanResourceManager);
-                    //    break;
+                    case 3:
+                        RemoveBook(ref service);
+                        break;
+                    case 4:
+                        FindAllBooksByName(ref service);
+                        break;
+                    case 5:
+                        FindAllBooksByPageCountRange(ref service);
+                        break;
                     case 6:
+                        RemoveAllBookByName(ref service);
+                        break;
+                    case 7:
                         Console.Clear();
                         Console.WriteLine("Thanks for visiting. All the best.");
                         return;
@@ -186,6 +190,33 @@ namespace Mart_10_HW
             }
             
 
+        }
+
+        static void FindAllBooksByPageCountRange(ref Service service) 
+        {
+            Console.WriteLine("Write the pages count of beginning of period");
+
+            string aa = Console.ReadLine();
+
+            while (!Regex.IsMatch(aa, @"^\d+$"))
+            {
+                Console.WriteLine($"\nSorry but page count must be in numbers!");
+                aa = Console.ReadLine();
+            }
+
+            int a = int.Parse(aa);
+
+            Console.WriteLine("Write the pages count of end of period");
+
+            string bb = Console.ReadLine();
+
+            while (!Regex.IsMatch(bb, @"^\d+$"))
+            {
+                Console.WriteLine($"\nSorry but page count must be in numbers!");
+                bb = Console.ReadLine();
+            }
+            int b = int.Parse(bb);
+            service.FindAllBooksByPageCountRange(a, b);
         }
     }
 }
