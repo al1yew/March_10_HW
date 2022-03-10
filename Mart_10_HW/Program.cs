@@ -81,7 +81,7 @@ namespace Mart_10_HW
                 authorname = Console.ReadLine();
             }
 
-            Console.WriteLine("\nWrite down the salary limit that you are going to implement");
+            Console.WriteLine("\nWrite down the page count");
             string pagecount = Console.ReadLine();
 
             while (!Regex.IsMatch(pagecount, @"^\d+$"))
