@@ -10,5 +10,8 @@ namespace Mart_10_HW.Interfaces
         Library[] library { get; }
         void AddBook(string name, string authorname, int pages);
         void RemoveBook(string bookcode);
+        void FindAllBooksByName(string name);
+        void RemoveAllBookByName(string name);
+        void FindAllBooksByPageCountRange(int a, int b)
     }
 }

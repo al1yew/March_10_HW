@@ -41,13 +41,35 @@ namespace Mart_10_HW.Services
             {
                 for (int i = 0; i < library.Length; i++)
                 {
-                    if (item.Books[i].Name.Trim().ToUpper() == name.Trim().ToUpper())
+                    if ((item.Books[i].Name.Trim().ToUpper() == name.Trim().ToUpper()))
                     {
                         founded.Add(item.Books[i].ToString());
                     }
                 }
             }
             return founded;
+        }
+
+        public void RemoveAllBookByName(string name)
+        {
+            foreach (var item in library)
+            {
+                for (int i = 0; i < library.Length; i++)
+                {
+                    if (item.Books[i].Name == name.Trim().ToUpper())
+                    {
+                        item.Books.RemoveAt(i);
+                        item.Books[i] = item.Books[item.Books.Count - 1];
+                        return;
+                    }
+                }
+            }
+            
+        }
+
+        public void FindAllBooksByPageCountRange(int a, int b) 
+        {
+
         }
     }
 }
