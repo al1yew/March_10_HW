@@ -18,24 +18,40 @@ namespace Mart_10_HW.Services
             library.AddBook(book);
         }
 
-        public void RemoveBook(string no)
+        public void RemoveBook(string bookcode)
         {
             foreach (Library item in library)
             {
-                for (int i = 0; i < item.Books; i++)
+                for (int i = 0; i < library.Length; i++)
                 {
-                    if (item.Books[i].No == no.Trim().ToUpper())
+                    if (item.Books[i].Code == bookcode.Trim().ToUpper())
                     {
-                        item.Books[i] = null;
-
-                        item.Books[i] = item.Books[item.Books.Length - 1];
-
-                        Array.Resize(ref item.Books, item.Books.Length - 1);
-
+                        item.Books.RemoveAt(i);
+                        item.Books[i] = item.Books[item.Books.Count - 1];
                         return;
                     }
                 }
             }
+        }
+
+        public List<string> FindAllBooksByName(string name) 
+        {
+            List<string> founded = new List<string>();
+            foreach (Library item in library)
+            {
+                for (int i = 0; i < library.Length; i++)
+                {
+                    if (item.Books[i].Name.Trim().ToUpper() == name.Trim().ToUpper())
+                    {
+                        founded.Add(item.Books[i].ToString());
+                    }
+                    else
+                    {
+                        Console.WriteLine("There is no equal bookname.");
+                    }
+                }
+            }
+            return founded;
         }
     }
 }

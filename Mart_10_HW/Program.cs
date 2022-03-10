@@ -135,5 +135,18 @@ namespace Mart_10_HW
 
             service.RemoveBook(bookcode);
         }
+        static void FindAllBooksByName(ref Service service)
+        {
+
+            Console.WriteLine("\nPlease write down name of Book that you are going to find:");
+            string name = Console.ReadLine();
+
+            while (!Regex.IsMatch(name, @"\A[\p{L}\s]+\Z") || !Regex.IsMatch(name, @"^\S+(?: \S+)*$"))
+            {
+                Console.WriteLine($"\nGiven name {name} for Book is not appropriate.\nIt MUST NOT contain something other than letters or whitespaces (only between words).");
+                name = Console.ReadLine();
+            }
+            service.FindAllBooksByName(name);
+        }
     }
 }
