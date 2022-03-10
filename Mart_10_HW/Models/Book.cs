@@ -6,14 +6,13 @@ namespace Mart_10_HW.Models
 {
     class Book
     {
-        private int Pages;
-
+        public string Code { get; set; }
         public Book(string name, string authorname, int pages)
         {
             Name = name;
             AuthorName = authorname;
-            Pages = pages;
-
+            PageCount = pages;
+            Code = Name.Substring(0, 2);
         }
         private static int codenum = 1;
         public string Name { get; set; }
@@ -23,9 +22,9 @@ namespace Mart_10_HW.Models
         public override string ToString()
         {
             return $"Book name: {Name}\n" +
-                $"Books pages count: {pages}\n" +
+                $"Books pages count: {PageCount}\n" +
                 $"Books Author: {AuthorName}\n" +
-                $"Code: {Name.Substring(0,2)}{codenum}";
+                $"Code: {Code}{codenum}";
         }
 
     }
