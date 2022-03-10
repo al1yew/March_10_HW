@@ -10,14 +10,8 @@ namespace Mart_10_HW.Models
 
         public void AddBook(string name, string authorname, int pages)
         {
-            Books.Add(new Book(name,authorname,pages));
+            Books.Add(new Book(name, authorname, pages));
         }
-
-        public override string ToString()
-        {
-            return $"There are {Books.Count} Books";
-        }
-
 
 
     }

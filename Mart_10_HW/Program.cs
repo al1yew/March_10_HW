@@ -2,6 +2,7 @@
 using System;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
+using Mart_10_HW.Services;
 
 namespace Mart_10_HW
 {
@@ -9,8 +10,7 @@ namespace Mart_10_HW
     {
         static void Main(string[] args)
         {
-            List<Book> Books = new List<Book>();
-            Library[] library = new Library[] { };
+            Service service = new Service();
             do
             {
                 Console.WriteLine($"\n===== Hello dear user =====\n" + "\n" +
@@ -36,10 +36,10 @@ namespace Mart_10_HW
                 switch (userchoicenum)
                 {
                     case 1:
-                        ShowAllBooks(ref library);
+                        ShowAllBooks(ref service);
                         break;
                     case 2:
-                        AddBook(ref library);
+                        AddBook(ref service);
                         break;
                     //case 3:
                     //    EditDepartment(ref humanResourceManager);
@@ -61,7 +61,7 @@ namespace Mart_10_HW
             } while (true);
         }
 
-        static void AddBook(ref Library[] library)
+        static void AddBook(ref Service service)
         {
             Console.WriteLine("\nPlease write down name of Book that you are going to add:");
             string name = Console.ReadLine();
@@ -92,25 +92,23 @@ namespace Mart_10_HW
 
             int pages = int.Parse(pagecount);
 
-            AddBook(name, authorname, pages);
+            service.AddBook(name, authorname, pages);
 
             Console.WriteLine("BYE!");
         }
-        static void ShowAllBooks(ref Library[] library)
+        static void ShowAllBooks(ref Service service)
         {
-            if (library.Length > 0)
+            Console.WriteLine("Welcome to Workers List.");
+            if (service.library.Length > 0)
             {
-                Console.WriteLine($"Welcome. There are {boo.Count} .");
-                Console.WriteLine("\nDepartments list:\n");
-                foreach (Department department in humanResourceManager.DepartmentList)
+                for (int i = 0; i < service.library.Length; i++) 
                 {
-                    Console.WriteLine(department);
-                    department.CalcSalaryAverage();
+                    Console.WriteLine(service.library[i]);
                 }
             }
             else
             {
-                Console.WriteLine("\nSorry but there are no Departments in system. Try to add some.\n");
+                Console.WriteLine($"There are no Books. Please add them first of all.");
                 return;
             }
         }
