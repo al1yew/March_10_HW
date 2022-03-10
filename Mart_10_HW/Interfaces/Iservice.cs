@@ -9,6 +9,6 @@ namespace Mart_10_HW.Interfaces
     {
         Library[] library { get; }
         void AddBook(string name, string authorname, int pages);
-
+        void RemoveBook(string no);
     }
 }

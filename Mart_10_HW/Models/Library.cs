@@ -6,11 +6,12 @@ namespace Mart_10_HW.Models
 {
     class Library
     {
-        List<Book> Books = new List<Book>();
+        List<Book> Books;
 
-        public void AddBook(string name, string authorname, int pages)
+        public void AddBook(Book book)
         {
-            Books.Add(new Book(name, authorname, pages));
+            Books.Add(book);
+            return;
         }
 
 
