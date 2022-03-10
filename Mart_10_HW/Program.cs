@@ -9,7 +9,7 @@ namespace Mart_10_HW
     {
         static void Main(string[] args)
         {
-            List<Library> library = new List<Library>();
+
             do
             {
                 Console.WriteLine($"\n===== Hello dear user =====\n" + "\n" +
@@ -34,9 +34,9 @@ namespace Mart_10_HW
                 Console.WriteLine($"-- We are preparing the process...");
                 switch (userchoicenum)
                 {
-                    //case 1:
-                    //    GetDepartments(ref humanResourceManager);
-                    //    break;
+                    case 1:
+                        AddBook();
+                        break;
                     //case 2:
                     //    AddDepartment(ref humanResourceManager);
                     //    break;
@@ -61,6 +61,8 @@ namespace Mart_10_HW
         }
         static void AddBook()
         {
+            Library library = new Library();
+
             Console.WriteLine("\nPlease write down name of Book that you are going to add:");
             string name = Console.ReadLine();
 
@@ -84,13 +86,13 @@ namespace Mart_10_HW
 
             while (!Regex.IsMatch(pagecount, @"^\d+$"))
             {
-                Console.WriteLine($"\nThe salary limit is not appropriate.\n1.Salary limit must be written as numbers.\n2.Salary limit should be minimum {workerlimitint * 250} for your Worker Limit.\nTry again.");
+                Console.WriteLine($"\nSorry but page count must be in numbers!");
                 pagecount = Console.ReadLine();
             }
 
             int pages = int.Parse(pagecount);
 
-            AddBook(name, authorname, pages);
+            library.AddBook(name, authorname, pages);
 
             Console.WriteLine("BYE!");
         }
