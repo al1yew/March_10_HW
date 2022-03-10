@@ -45,10 +45,6 @@ namespace Mart_10_HW.Services
                     {
                         founded.Add(item.Books[i].ToString());
                     }
-                    else
-                    {
-                        Console.WriteLine("There is no equal bookname.");
-                    }
                 }
             }
             return founded;
