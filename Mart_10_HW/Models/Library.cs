@@ -8,12 +8,10 @@ namespace Mart_10_HW.Models
     {
         List<Book> Books = new List<Book>();
 
-        Book[] books = new Book[] { };
+        //Book[] books = new Book[] { };
         public void AddBook(string name, string authorname, int pages)
         {
-            //Array.Resize(ref books, books.Length + 1);
-            //books[books.Length - 1] = new Book(name, authorname, pages);
-            
+            Books.Add(new Book(name,authorname,pages));
         }
 
 
