@@ -13,7 +13,7 @@ namespace Mart_10_HW.Models
             Name = name;
             AuthorName = authorname;
             PageCount = pages;
-            Code = Name.Substring(0, 2);
+            Code = $"{Name.Substring(0, 2)}{codenum}";
             codenum++;
         }
 
@@ -28,7 +28,7 @@ namespace Mart_10_HW.Models
             return $"Book name: {Name}\n" +
                 $"Books pages count: {PageCount}\n" +
                 $"Books Author: {AuthorName}\n" +
-                $"Code: {Code}{codenum}";
+                $"Code: {Code}";
         }
 
     }
